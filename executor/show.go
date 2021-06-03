@@ -629,11 +629,11 @@ func (e *ShowExec) fetchShowIndex() error {
 				nil,                    // Packed
 				nullVal,                // Null
 				idx.Meta().Tp.String(), // Index_type
-				"",                     // Comment
-				idx.Meta().Comment,     // Index_comment
-				visible,                // Index_visible
-				expression,             // Expression
-				isClustered,            // Clustered
+				"",                 // Comment
+				idx.Meta().Comment, // Index_comment
+				visible,            // Index_visible
+				expression,         // Expression
+				isClustered,        // Clustered
 			})
 		}
 	}

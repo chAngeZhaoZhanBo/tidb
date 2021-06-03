@@ -125,8 +125,8 @@ func NewSchemaSyncer(ctx context.Context, etcdCli *clientv3.Client, id string, o
 		selfSchemaVerPath:         fmt.Sprintf("%s/%s", DDLAllSchemaVersions, id),
 		ownerChecker:              oc,
 		notifyCleanExpiredPathsCh: make(chan struct{}, 1),
-		ctx:                       childCtx,
-		cancel:                    cancelFunc,
+		ctx:    childCtx,
+		cancel: cancelFunc,
 	}
 }
 

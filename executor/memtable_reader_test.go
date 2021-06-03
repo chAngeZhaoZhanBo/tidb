@@ -899,9 +899,9 @@ func (s *testMemTableReaderSuite) TestTiDBClusterLog(c *C) {
 		var expected []string
 		for _, row := range cas.expected {
 			expectedRow := []string{
-				restime(row[0]),             // time column
-				row[1],                      // type column
-				testServers[row[1]].address, // instance column
+				restime(row[0]), // time column
+				row[1],          // type column
+				testServers[row[1]].address,                             // instance column
 				strings.ToUpper(sysutil.ParseLogLevel(row[2]).String()), // level column
 				row[3], // message column
 			}

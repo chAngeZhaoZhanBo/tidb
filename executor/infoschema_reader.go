@@ -940,11 +940,11 @@ func (e *memtableRetriever) setDataFromViews(ctx sessionctx.Context, schemas []*
 				table.Name.O,                    // TABLE_NAME
 				table.View.SelectStmt,           // VIEW_DEFINITION
 				table.View.CheckOption.String(), // CHECK_OPTION
-				"NO",                            // IS_UPDATABLE
-				table.View.Definer.String(),     // DEFINER
-				table.View.Security.String(),    // SECURITY_TYPE
-				charset,                         // CHARACTER_SET_CLIENT
-				collation,                       // COLLATION_CONNECTION
+				"NO", // IS_UPDATABLE
+				table.View.Definer.String(),  // DEFINER
+				table.View.Security.String(), // SECURITY_TYPE
+				charset,   // CHARACTER_SET_CLIENT
+				collation, // COLLATION_CONNECTION
 			)
 			rows = append(rows, record)
 		}
@@ -1773,24 +1773,24 @@ func (e *memtableRetriever) setDataForAnalyzeStatus(sctx sessionctx.Context) {
 func (e *memtableRetriever) setDataForPseudoProfiling(sctx sessionctx.Context) {
 	if v, ok := sctx.GetSessionVars().GetSystemVar("profiling"); ok && variable.TiDBOptOn(v) {
 		row := types.MakeDatums(
-			0,                      // QUERY_ID
-			0,                      // SEQ
-			"",                     // STATE
+			0,  // QUERY_ID
+			0,  // SEQ
+			"", // STATE
 			types.NewDecFromInt(0), // DURATION
 			types.NewDecFromInt(0), // CPU_USER
 			types.NewDecFromInt(0), // CPU_SYSTEM
-			0,                      // CONTEXT_VOLUNTARY
-			0,                      // CONTEXT_INVOLUNTARY
-			0,                      // BLOCK_OPS_IN
-			0,                      // BLOCK_OPS_OUT
-			0,                      // MESSAGES_SENT
-			0,                      // MESSAGES_RECEIVED
-			0,                      // PAGE_FAULTS_MAJOR
-			0,                      // PAGE_FAULTS_MINOR
-			0,                      // SWAPS
-			"",                     // SOURCE_FUNCTION
-			"",                     // SOURCE_FILE
-			0,                      // SOURCE_LINE
+			0,  // CONTEXT_VOLUNTARY
+			0,  // CONTEXT_INVOLUNTARY
+			0,  // BLOCK_OPS_IN
+			0,  // BLOCK_OPS_OUT
+			0,  // MESSAGES_SENT
+			0,  // MESSAGES_RECEIVED
+			0,  // PAGE_FAULTS_MAJOR
+			0,  // PAGE_FAULTS_MINOR
+			0,  // SWAPS
+			"", // SOURCE_FUNCTION
+			"", // SOURCE_FILE
+			0,  // SOURCE_LINE
 		)
 		e.rows = append(e.rows, row)
 	}
@@ -1804,14 +1804,14 @@ func (e *memtableRetriever) setDataForServersInfo(ctx sessionctx.Context) error 
 	rows := make([][]types.Datum, 0, len(serversInfo))
 	for _, info := range serversInfo {
 		row := types.MakeDatums(
-			info.ID,              // DDL_ID
-			info.IP,              // IP
-			int(info.Port),       // PORT
-			int(info.StatusPort), // STATUS_PORT
-			info.Lease,           // LEASE
-			info.Version,         // VERSION
-			info.GitHash,         // GIT_HASH
-			info.BinlogStatus,    // BINLOG_STATUS
+			info.ID,                                       // DDL_ID
+			info.IP,                                       // IP
+			int(info.Port),                                // PORT
+			int(info.StatusPort),                          // STATUS_PORT
+			info.Lease,                                    // LEASE
+			info.Version,                                  // VERSION
+			info.GitHash,                                  // GIT_HASH
+			info.BinlogStatus,                             // BINLOG_STATUS
 			stringutil.BuildStringFromLabels(info.Labels), // LABELS
 		)
 		if sem.IsEnabled() {
@@ -1885,10 +1885,10 @@ func (e *memtableRetriever) dataForTableTiFlashReplica(ctx sessionctx.Context, s
 				}
 			}
 			record := types.MakeDatums(
-				schema.Name.O,                   // TABLE_SCHEMA
-				tbl.Name.O,                      // TABLE_NAME
-				tbl.ID,                          // TABLE_ID
-				int64(tbl.TiFlashReplica.Count), // REPLICA_COUNT
+				schema.Name.O, // TABLE_SCHEMA
+				tbl.Name.O,    // TABLE_NAME
+				tbl.ID,        // TABLE_ID
+				int64(tbl.TiFlashReplica.Count),                      // REPLICA_COUNT
 				strings.Join(tbl.TiFlashReplica.LocationLabels, ","), // LOCATION_LABELS
 				tbl.TiFlashReplica.Available,                         // AVAILABLE
 				progress,                                             // PROGRESS

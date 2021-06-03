@@ -802,9 +802,9 @@ func (ts *tidbTestSerialSuite) TestErrorNoRollback(c *C) {
 
 	cfg.Security = config.Security{
 		RequireSecureTransport: true,
-		SSLCA:                  "wrong path",
-		SSLCert:                "wrong path",
-		SSLKey:                 "wrong path",
+		SSLCA:   "wrong path",
+		SSLCert: "wrong path",
+		SSLKey:  "wrong path",
 	}
 	_, err = NewServer(cfg, ts.tidbdrv)
 	c.Assert(err, NotNil)

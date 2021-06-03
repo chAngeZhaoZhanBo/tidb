@@ -1930,7 +1930,7 @@ func defaultLimitTestCase() *limitCase {
 		count:                 10000,
 		childUsedSchema:       []bool{false, true},
 		usingInlineProjection: false,
-		ctx:                   ctx,
+		ctx: ctx,
 	}
 	return tc
 }
